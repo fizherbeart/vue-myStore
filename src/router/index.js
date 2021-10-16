@@ -13,14 +13,14 @@ export default new Router({
       component: Login
     },   
     {
-      path: '/user',
+      path: '/main',
       name: 'Layout',
       component: Layout,
       children: [
           {
-            path: '/seat',
-            name: 'seat',
-            component:() => import("@/views/Seat"),
+            path: '/user',
+            name: 'user',
+            component:() => import("@/views/User"),
           }
         ]
     }
