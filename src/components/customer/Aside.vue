@@ -9,7 +9,7 @@
         <template #title>系统管理</template>
         <el-menu-item index="/user">用户管理</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/seat">商品管理</el-menu-item>
+      <el-menu-item index="/goods">商品管理</el-menu-item>
       <el-menu-item index="/upload">文件上传</el-menu-item>
     </el-menu>
   </div>

@@ -7,11 +7,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login
-    },
+       
     {
       path: '/main',
       name: 'Layout',
@@ -28,7 +24,6 @@ export default new Router({
             component:() => import("@/views/tenant/goods"),
           }
         ]
-    },
+    }
   ]
-  
 })
