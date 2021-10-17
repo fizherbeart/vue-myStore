@@ -7,6 +7,9 @@
         <span class="el-dropdown-link">
           {{ user.nickName }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
+        <router-link to="/cart" >
+               购物车<span v-if="cartList.length">{{ cartList.length }}</span>
+        </router-link>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="$router.push('/person')">个人信息</el-dropdown-item>
@@ -15,7 +18,9 @@
         </template>
       </el-dropdown>
     </div>
+    
   </div>
+  
 </template>
 
 <script>
@@ -29,7 +34,12 @@ export default {
   created() {
     let str = sessionStorage.getItem("user") || "{}"
     this.user = JSON.parse(str)
-  }
+  },
+  computed: {
+            cartList () {
+                return this.$store.state.cartList;
+            }
+        }
 }
 </script>
 

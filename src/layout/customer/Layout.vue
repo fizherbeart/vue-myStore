@@ -2,7 +2,7 @@
   <div>
     <!--    头部-->
     <Header/>
-
+    
     <!--    主体-->
     <div style="display: flex">
       <!--      侧边栏-->
@@ -10,6 +10,8 @@
       <!--      内容区域-->
       <router-view style="flex: 1"/>
     </div>
+
+    
   </div>
 </template>
 
