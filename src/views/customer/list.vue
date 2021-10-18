@@ -27,13 +27,6 @@
                     @click="handleOrderDefault">默认</span>
                 <span
                     class="list-control-order-item"
-                    :class="{on: order === 'sales'}"
-                    @click="handleOrderSales">
-                    销量
-                    <template v-if="order === 'sales'">↓</template>
-                </span>
-                <span
-                    class="list-control-order-item"
                     :class="{on: order.indexOf('cost') > -1}"
                     @click="handleOrderCost">
                     价格
@@ -72,9 +65,7 @@
                 }
                 // 排序
                 if (this.order !== '') {
-                    if (this.order === 'sales') {
-                        list = list.sort((a, b) => b.sales - a.sales);
-                    } else if (this.order === 'cost-desc') {
+                    if (this.order === 'cost-desc') {
                         list = list.sort((a, b) => b.cost - a.cost);
                     } else if (this.order === 'cost-asc') {
                         list = list.sort((a, b) => a.cost - b.cost);
@@ -107,9 +98,6 @@
             },
             handleOrderDefault () {
                 this.order = '';
-            },
-            handleOrderSales () {
-                this.order = 'sales';
             },
             handleOrderCost () {
                 if (this.order === 'cost-desc') {
