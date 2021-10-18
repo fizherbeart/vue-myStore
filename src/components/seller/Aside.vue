@@ -6,8 +6,7 @@
         router
         class="el-menu-vertical-demo">
     
-      <el-menu-item index="/list">查看商品</el-menu-item>
-      
+      <el-menu-item index="/goods">商品管理</el-menu-item>
     </el-menu>
   </div>
 </template>

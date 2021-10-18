@@ -1,60 +1,30 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+ 
+	// 引入其他路由文件
 import Login from '@/views/Login'
-import Layout from '@/layout/customer/Layout'
+import CustomerRoutes from '@/router/customer';
+import ManagerRoutes from '@/router/manager';
+import SellerRoutes from '@/router/seller';
+ 
+  Vue.use(VueRouter)
 
-
-Vue.use(Router)
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/main',
-      name: 'Layout',
-      component: Layout,
-      children: [
-          {
-            path: '/user',
-            name: 'user',
-            component:() => import("@/views/User"),
-          },
-          {
-            path: '/goods',
-            name: 'good',
-            component:() => import("@/views/tenant/goods"),
-          },
-          {
-            path: '/list',
-            meta: {
-                title: '商品列表'
-            },
-            component: () => import("@/views/customer/list"),
-        },
-        {
-            path: '/product/:id',
-            meta: {
-                title: '商品详情'
-            },
-            component: () => import("@/views/customer/product"),
-        },
-        {
-            path: '/cart',
-            meta: {
-                title: '购物车'
-            },
-            component: () => import("@/views/customer/cart"),
-        },
-        {
-            path: '*',
-            redirect: '/list'
-        }
-        ]
-    },
-  ]
+	const baseRoutes = [];	
+ 
+	const routes = baseRoutes.concat(CustomerRoutes, ManagerRoutes, SellerRoutes,{
+    path: '/',
+    name: 'Login',
+    component: Login
+  });
   
-})
+ 
+	export default new VueRouter({
+      mode:'history',
+	  	routes,
+	});
+
+
+
+
+

@@ -54,7 +54,7 @@
     </div>
 </template>
 <script>
-import Product from '@/components/product.vue';
+import Product from '@/components/customer/product.vue';
 export default {
     components: { Product },
     computed: {
