@@ -1,3 +1,4 @@
+<!-- 商品详情页面 -->
 <template>
     <div v-if="product">
         <div class="product">
@@ -7,26 +8,18 @@
             <div class="product-info">
                 <h1 class="product-name">{{ product.name }}</h1>
                 <div class="product-cost">¥ {{ product.cost }}</div>
-                <div class="product-add-cart" @click="handleAddToCart">加入购物车</div>
+                <div class="product-add-cart" @click="handleAddToCart" v-show="userLevel == 1">加入购物车</div>
             </div>
-        </div>
-        <div class="product-desc">
-            <h2>产品介绍</h2>
-            <img
-                v-for="n in 10"
-                :key="n"
-                :src="'http://ordfm6aah.bkt.clouddn.com/shop/' + n + '.jpeg'"
-            />
         </div>
     </div>
 </template>
 <script>
-
 export default {
     data() {
         return {
             // 获取路由中的参数
             id: parseInt(this.$route.params.id),
+            userLevel: this.$store.state.userLevel,
             product: null
         }
     },
@@ -84,20 +77,5 @@ export default {
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-}
-.product-desc {
-    background: #fff;
-    margin: 32px;
-    padding: 32px;
-    border: 1px solid #dddee1;
-    border-radius: 10px;
-    text-align: center;
-}
-.product-desc img {
-    display: block;
-    width: 50%;
-    margin: 32px auto;
-    padding: 32px;
-    border-bottom: 1px solid #dddee1;
 }
 </style>

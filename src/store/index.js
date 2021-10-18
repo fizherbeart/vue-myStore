@@ -1,5 +1,4 @@
 import Vue from 'vue'
-
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
@@ -18,6 +17,7 @@ function getFilterArray(array) {
 }
 export default new Vuex.Store({
     state: {
+        userLevel: 1,  // 用户权限等级，之后登陆时更新这个数据
         productList: [{
             id: 1,
             name: 'AirPods',
