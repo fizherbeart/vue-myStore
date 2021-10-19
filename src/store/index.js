@@ -17,7 +17,21 @@ function getFilterArray(array) {
 }
 export default new Vuex.Store({
     state: {
-        userLevel: 1,  // 用户权限等级，之后登陆时更新这个数据
+        userLevel: 0,  // 用户权限等级，之后登陆时更新这个数据
+        userList: [{
+            username: 'admin',
+            password: '123',
+            level: 3
+        }, {
+            username: 'user2',
+            password: '123',
+            level: 2
+        }, {
+            username: 'user1',
+            password: '123',
+            level: 1
+        }],
+        // 用户列表
         productList: [{
             id: 1,
             name: 'AirPods',
@@ -108,9 +122,24 @@ export default new Vuex.Store({
         colors: state => {
             const colors = state.productList.map(item => item.color);
             return getFilterArray(colors);
+        },
+        // 查看用户是否存在,如果存在就返回true,并把userLevel更新 
+        userIsExisted: (state) => (user) => {
+            const theUser = state.userList.find(item => item.username == user.username && item.password == user.password)
+            if (theUser) {
+                state.userLevel = theUser.level;
+                return true;
+            } else {
+                state.userLevel = 0;
+                return false;
+            }
         }
     },
     mutations: {
+        // 设置 userLevel   只用登录成功之后调用
+        setUserLevel(state, level) {
+            state.userLevel = level;
+        },
         // 添加商品列表
         setProductList(state, data) {
             state.productList = data;
@@ -160,6 +189,10 @@ export default new Vuex.Store({
                     resolve();
                 }, 500)
             });
+        },
+        // 请求用户列表
+        getUserList(context) {
+            // code here 可能需要用axios
         }
     }
 })
