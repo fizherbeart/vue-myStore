@@ -19,8 +19,12 @@ export default {
         return {
             // 获取路由中的参数
             id: parseInt(this.$route.params.id),
-            userLevel: this.$store.state.userLevel,
             product: null
+        }
+    },
+    computed: {
+        userLevel() {
+            return this.$store.state.userLevel;
         }
     },
     methods: {

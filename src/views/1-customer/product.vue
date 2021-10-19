@@ -16,13 +16,17 @@ export default {
     },
     data() {
         return {
-            userLevel: this.$store.state.userLevel,
             colors: {
                 '白色': '#ffffff',
                 '金色': '#dac272',
                 '蓝色': '#233472',
                 '红色': '#f2352e'
             }
+        }
+    },
+    computed: {
+        userLevel() {
+            return this.$store.state.userLevel;
         }
     },
     methods: {

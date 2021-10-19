@@ -21,10 +21,14 @@
 
 export default {
   name: "Aside",
+  computed: {
+    userLevel() {
+      return this.$store.state.userLevel;
+    }
+  },
   data() {
     return {
       user: {},
-      userLevel: this.$store.state.userLevel,
       path: this.$route.path   // 设置默认高亮的菜单
     }
   },
