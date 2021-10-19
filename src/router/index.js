@@ -8,7 +8,6 @@ import Layout from '@/views/layout/Index'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
   routes: [
     {
       path: '/',
