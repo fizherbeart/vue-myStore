@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import cookie from '../util/cookie';
+import store from '../store';
 
 // 
 import Login from '@/views/Login'
@@ -7,10 +9,14 @@ import Layout from '@/views/layout/Index'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
       path: '/',
+      redirect: '/list'
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
     },
@@ -63,7 +69,31 @@ export default new VueRouter({
   ]
 });
 
+/*
+* Vue路由守卫
+* beforeEach:从一个页面跳转到另外一个页面时触发
+* to:要跳转的页面
+* from:从哪个页面出来
+* next:决定是否通过
+*/
+router.beforeEach((to, from, next) => {
+  // 如果跳转的页面不存在，跳转到404页面
+  if (to.matched.length === 0) {
+    next('/404')
+  }
+  const user = { username: cookie.getCookie("username"), password: cookie.getCookie("openId") }
+  if (store.getters.userIsExisted(user)) {
+    next()
+  } else {
+    if (to.path === "/login") {
+      next()
+    } else {
+      next('/login')
+    }
+  }
+})
 
+export default router;
 
 
 

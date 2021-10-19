@@ -5,10 +5,12 @@
     <div style="width: 100px">
       <el-dropdown>
         <span class="el-dropdown-link">
-          {{ user.nickName }}<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ user.nickName }}
+          <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
-        <router-link to="/cart" >
-               购物车<span v-if="cartList.length">{{ cartList.length }}</span>
+        <router-link to="/cart">
+          购物车
+          <span v-if="cartList.length">{{ cartList.length }}</span>
         </router-link>
         <template #dropdown>
           <el-dropdown-menu>
@@ -18,9 +20,7 @@
         </template>
       </el-dropdown>
     </div>
-    
   </div>
-  
 </template>
 
 <script>
@@ -36,13 +36,12 @@ export default {
     this.user = JSON.parse(str)
   },
   computed: {
-            cartList () {
-                return this.$store.state.cartList;
-            }
-        }
+    cartList() {
+      return this.$store.state.cartList;
+    }
+  }
 }
 </script>
 
 <style scoped>
-
 </style>

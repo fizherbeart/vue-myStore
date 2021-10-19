@@ -93,8 +93,14 @@ export default {
         if (valid) {
           const formInfo = this.$refs["form"].model;
           const user = { username: formInfo.username, password: formInfo.password }
+          // 判断是否用户信息是否正确
           if (this.$store.getters.userIsExisted(user)) {
             this.$message.success('登录成功!');
+            let loginInfo = {
+              username: user.username,
+              openId: user.password  // 暂时用来存密码
+            }
+            this.cookie.setCookie(loginInfo, 7) // 创建cookie
             this.$router.replace('/list');
           } else {
             this.$message.error('登录失败,用户名或密码错误!');
@@ -108,8 +114,6 @@ export default {
 </script>
 
 <style scoped>
-#background {
-}
 #login_box {
   border: 2px solid blanchedalmond;
   padding: 45px;
