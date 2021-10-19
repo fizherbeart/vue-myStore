@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" label-width="80px">
       <el-form-item label="用户名">
         <el-input v-model="form.username"></el-input>
       </el-form-item>
@@ -18,6 +18,27 @@
           show-password
         ></el-input>
       </el-form-item>
+      <el-form-item>
+        <el-row>
+          <el-col :span="12">
+            <el-select placeholder="选择角色" v-model="value">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="12" prop="invitation">
+            <el-input
+              prefix-icon="el-icon-star-on"
+              v-model="form.invitation"
+              placeholder="邀请码"
+            ></el-input>
+          </el-col>
+        </el-row>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -31,7 +52,19 @@ export default {
         username: "",
         password1: "",
         password2: "",
+        invitation:""
       },
+      value:'',
+      options:[{
+        value:1,
+        label:"管理员"
+      },{
+        value:2,
+        label:"卖家"
+      },{
+        value:3,
+        label:"买家"
+      }]
     };
   },
   created() {},

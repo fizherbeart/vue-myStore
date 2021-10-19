@@ -14,10 +14,6 @@ Vue.use(ElementUI)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.use(Vuex)
-// 数组排重
-
-
-
 
 /* eslint-disable no-new */
 new Vue({
