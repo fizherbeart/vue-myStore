@@ -18,6 +18,14 @@ npm run build
 npm run build --report
 ```
 
+## 基本用户信息
+
+管理员: username: 'admin',password: '123',
+
+卖家: username: 'user2',password: '123',
+
+买家: username: 'user1',password: '123',
+
 ## 新框架说明
 所有vue组件都在`views`文件中。
 为三种用户分别设置权限等级(1-3, 3为管理员,等级最高),存储在在vuex中的`userLevel`变量内,方便所有组件进行访问.
@@ -28,7 +36,7 @@ npm run build --report
 - 也就是说权限等级越高, 功能越多(除了添加购物车功能, 该功能只给买家提供)
 ## Todo List
 
-- [ ] 注册登录
+- [ ] 注册功能
 - [ ] 显示库存
 - [x] 通过关键字搜索商品搜索框
 - [ ] 商品管理界面的搜索框
