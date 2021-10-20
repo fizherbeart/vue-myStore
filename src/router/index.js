@@ -12,6 +12,10 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     {
+      path: '/404',
+      component: () => import("@/views/page404")
+    },
+    {
       path: '/',
       redirect: '/list'
     },
